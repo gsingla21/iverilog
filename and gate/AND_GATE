@@ -1,0 +1,54 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "G:\soft\iverilog\lib\ivl\system.vpi";
+:vpi_module "G:\soft\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "G:\soft\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "G:\soft\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "G:\soft\iverilog\lib\ivl\va_math.vpi";
+S_00000000010aec40 .scope module, "andgate_tb" "andgate_tb" 2 1;
+ .timescale 0 0;
+v00000000010aba30_0 .var "t_x", 0 0;
+v00000000010abad0_0 .var "t_y", 0 0;
+v00000000010abb70_0 .net "t_z", 0 0, L_00000000010aef60;  1 drivers
+S_00000000010aedd0 .scope module, "mygate" "andgate" 2 4, 3 1 0, S_00000000010aec40;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "x";
+    .port_info 1 /INPUT 1 "y";
+    .port_info 2 /OUTPUT 1 "z";
+L_00000000010aef60 .functor AND 1, v00000000010aba30_0, v00000000010abad0_0, C4<1>, C4<1>;
+v00000000010a6dc0_0 .net "x", 0 0, v00000000010aba30_0;  1 drivers
+v0000000000645380_0 .net "y", 0 0, v00000000010abad0_0;  1 drivers
+v00000000010ae880_0 .net "z", 0 0, L_00000000010aef60;  alias, 1 drivers
+    .scope S_00000000010aec40;
+T_0 ;
+    %vpi_call 2 8 "$display", "X and Y => Z" {0 0 0};
+    %vpi_call 2 9 "$monitor", v00000000010aba30_0, " and ", v00000000010abad0_0, " => ", v00000000010abb70_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000010aba30_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000010abad0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000010aba30_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000010abad0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000010aba30_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000010abad0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000010aba30_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000010abad0_0, 0, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    ".\andgate_tb.v";
+    ".\and gate.v";

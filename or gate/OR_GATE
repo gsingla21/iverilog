@@ -1,0 +1,54 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "G:\soft\iverilog\lib\ivl\system.vpi";
+:vpi_module "G:\soft\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "G:\soft\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "G:\soft\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "G:\soft\iverilog\lib\ivl\va_math.vpi";
+S_000000000069ebf0 .scope module, "orgate_tb" "orgate_tb" 2 1;
+ .timescale 0 0;
+v000000000069bc40_0 .var "t_x", 0 0;
+v000000000069bce0_0 .var "t_y", 0 0;
+v000000000069bd80_0 .net "t_z", 0 0, L_00000000006967c0;  1 drivers
+S_000000000069ed80 .scope module, "mygate" "orgate" 2 4, 3 1 0, S_000000000069ebf0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "x";
+    .port_info 1 /INPUT 1 "y";
+    .port_info 2 /OUTPUT 1 "z";
+L_00000000006967c0 .functor OR 1, v000000000069bc40_0, v000000000069bce0_0, C4<0>, C4<0>;
+v000000000069ef10_0 .net "x", 0 0, v000000000069bc40_0;  1 drivers
+v0000000000696c00_0 .net "y", 0 0, v000000000069bce0_0;  1 drivers
+v0000000000ec52e0_0 .net "z", 0 0, L_00000000006967c0;  alias, 1 drivers
+    .scope S_000000000069ebf0;
+T_0 ;
+    %vpi_call 2 8 "$display", "X OR Y => Z" {0 0 0};
+    %vpi_call 2 9 "$monitor", v000000000069bc40_0, " OR ", v000000000069bce0_0, " => ", v000000000069bd80_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000069bc40_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000069bce0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000069bc40_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000069bce0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000069bc40_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000069bce0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000069bc40_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000069bce0_0, 0, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    ".\or_gate_tb.v";
+    ".\or_gate.v";
